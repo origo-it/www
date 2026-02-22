@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Beredskap">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#922b21">
+<title>Beredskapssjekkliste</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #1a1a2e;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: env(safe-area-inset-top, 20px) 20px env(safe-area-inset-bottom, 20px);
+  }
+  .card {
+    background: #ffffff;
+    border-radius: 16px;
+    width: 360px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  }
+  .header {
+    background: linear-gradient(135deg, #c0392b, #922b21);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header svg {
+    height: 48px;
+    width: auto;
+  }
+  .header-icon {
+    font-size: 28px;
+  }
+  .section {
+    padding: 14px 18px 10px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .section:last-of-type { border-bottom: none; }
+  .section-title {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #c0392b;
+    margin-bottom: 8px;
+  }
+  .item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 7px;
+  }
+  .checkbox {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #c0392b;
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .item-text {
+    font-size: 12.5px;
+    color: #222;
+    line-height: 1.4;
+  }
+  .item-text strong {
+    font-weight: 600;
+    color: #111;
+  }
+  .footer {
+    background: #f8f8f8;
+    padding: 10px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #e8e8e8;
+  }
+  .footer-note {
+    font-size: 10px;
+    color: #888;
+    font-style: italic;
+  }
+  .footer-badge {
+    background: #c0392b;
+    color: white;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+
+  <div class="header">
+    <!-- Origo Solutions logo – hvit versjon -->
+    <svg viewBox="0 0 293.02 134.75" xmlns="http://www.w3.org/2000/svg">
+      <style>.st3{fill:#FFFFFF;}</style>
+      <g>
+        <path class="st3" d="M73.92,80.16c0,11.21-7.91,16.48-18.35,16.48H33.59c-10.44,0-18.35-5.6-18.35-16.81V49.17c0-11.21,7.91-16.26,18.35-16.26h21.98c10.44,0,18.35,4.72,18.35,15.93V80.16z M28.97,75.76c0,6.04,3.41,8.13,9.01,8.13h11.54c5.93,0,10.77-0.77,10.77-8.13V53.9c0-7.47-4.84-8.13-10.77-8.13H37.98c-5.6,0-9.01,2.09-9.01,8.13V75.76z"/>
+        <path class="st3" d="M99.19,96.64H85.46V49.5c0-11.21,7.91-16.59,18.35-16.59h10.44v12.86h-6.05c-5.71,0-9.01,2.09-9.01,8.13V96.64z"/>
+        <path class="st3" d="M136.57,96.64h-13.74V32.91h13.74V96.64z"/>
+        <path class="st3" d="M186.99,32.91c10.44,0,18.35,4.94,18.35,16.15v55.71c0,11.21-7.91,16.04-18.35,16.04h-39.34v-12.75h35.6c4.94,0,8.35-2.09,8.35-8.24v-3.18h-26.59c-10.44,0-18.35-5.28-18.35-16.48V49.5c0-11.21,7.91-16.59,18.35-16.59H186.99z M168.42,45.66c-4.18,0-8.02,2.2-8.02,8.13v23.74c0,6.26,6.37,6.37,11.1,6.37h20.11V53.79c0-5.93-3.3-8.13-8.35-8.13H168.42z"/>
+        <path class="st3" d="M275.01,80.16c0,11.21-7.91,16.48-18.35,16.48h-21.98c-10.44,0-18.35-5.6-18.35-16.81V49.17c0-11.21,7.91-16.26,18.35-16.26h21.98c10.44,0,18.35,4.72,18.35,15.93V80.16z M230.06,75.76c0,6.04,3.41,8.13,9.01,8.13h11.54c5.93,0,10.77-0.77,10.77-8.13V53.9c0-7.47-4.83-8.13-10.77-8.13h-11.54c-5.6,0-9.01,2.09-9.01,8.13V75.76z"/>
+      </g>
+      <path class="st3" d="M21.78,112.78c1.5,0,2.57,0.85,2.57,2.41v2.5c0,1.57-1.06,2.32-2.57,2.32h-5.82v-2.05h5.14c0.72,0,1.11-0.34,1.11-1.21v-0.72c0-0.85-0.39-1.21-1.11-1.21H18.4c-1.5,0-2.57-0.83-2.57-2.41v-2.3c0-1.57,1.06-2.32,2.57-2.32h5.83v2.05h-5.14c-0.72,0-1.11,0.36-1.11,1.21v0.52c0,0.85,0.39,1.21,1.11,1.21H21.78z"/>
+      <path class="st3" d="M39.57,117.7c0,1.57-1.05,2.32-2.57,2.32h-4.09c-1.5,0-2.57-0.84-2.57-2.41v-7.39c0-1.57,1.06-2.41,2.57-2.41H37c1.52,0,2.57,0.85,2.57,2.41V117.7z M32.49,116.76c0,0.86,0.39,1.21,1.21,1.21h2.62c0.72,0,1.13-0.34,1.13-1.21v-5.71c0-0.83-0.41-1.19-1.13-1.19h-2.62c-0.81,0-1.21,0.36-1.21,1.19V116.76z"/>
+      <path class="st3" d="M45.56,117.7v-9.89h2.15v8.95c0,0.86,0.39,1.21,1.11,1.21h5.01v2.05h-5.7C46.63,120.02,45.56,119.26,45.56,117.7z"/>
+      <path class="st3" d="M61.97,116.87c0,0.72,0.38,1.1,1.22,1.1h2.54c0.85,0,1.22-0.38,1.22-1.1v-9.06h2.15v9.66c0,1.52-0.78,2.55-2.35,2.55h-4.49c-1.57,0-2.43-1.03-2.43-2.55v-9.66h2.15V116.87z"/>
+      <path class="st3" d="M80.34,109.85v10.16h-2.13v-10.16H75.1v-2.05h8.3v2.05H80.34z"/>
+      <path class="st3" d="M91.54,120.02h-2.14V107.8h2.14V120.02z"/>
+      <path class="st3" d="M106.76,117.7c0,1.57-1.05,2.32-2.57,2.32h-4.09c-1.5,0-2.57-0.84-2.57-2.41v-7.39c0-1.57,1.07-2.41,2.57-2.41h4.09c1.52,0,2.57,0.85,2.57,2.41V117.7z M99.68,116.76c0,0.86,0.39,1.21,1.21,1.21h2.61c0.72,0,1.13-0.34,1.13-1.21v-5.71c0-0.83-0.41-1.19-1.13-1.19h-2.61c-0.81,0-1.21,0.36-1.21,1.19V116.76z"/>
+      <path class="st3" d="M122.01,107.8v10.86c0,1.03-0.41,1.55-1.25,1.55c-0.44,0-0.97-0.14-1.82-1.49l-4.04-6.42v7.7h-2.15v-10.99c0-0.91,0.47-1.41,1.14-1.41c0.42,0,0.86,0.19,1.3,0.89l4.66,7.55v-8.25H122.01z"/>
+      <path class="st3" d="M133.95,112.78c1.5,0,2.57,0.85,2.57,2.41v2.5c0,1.57-1.06,2.32-2.57,2.32h-5.82v-2.05h5.14c0.72,0,1.11-0.34,1.11-1.21v-0.72c0-0.85-0.39-1.21-1.11-1.21h-2.69c-1.5,0-2.57-0.83-2.57-2.41v-2.3c0-1.57,1.06-2.32,2.57-2.32h5.82v2.05h-5.14c-0.72,0-1.11,0.36-1.11,1.21v0.52c0,0.85,0.39,1.21,1.11,1.21H133.95z"/>
+      <g>
+        <path class="st3" d="M155,18.17h-5l-1.14,3.1h-0.98l4.17-11.02h0.89l4.17,11.02h-0.97L155,18.17z M150.29,17.38h4.42l-2.21-6L150.29,17.38z"/>
+        <path class="st3" d="M171.71,21.27h-2.27v-4.72h-4.43v4.72h-2.27V10.25h2.27v4.46h4.43v-4.46h2.27V21.27z"/>
+        <path class="st3" d="M176.44,21.27h-2.27V10.25h2.27V21.27z"/>
+        <path class="st3" d="M181.83,10.25l2.83,7.99l2.82-7.99h2.98v11.02h-2.28v-3.01l0.23-5.2l-2.97,8.21h-1.56l-2.97-8.2l0.23,5.19v3.01h-2.27V10.25H181.83z"/>
+        <path class="st3" d="M199.12,18.99h-3.98l-0.76,2.27h-2.41l4.1-11.02h2.1l4.12,11.02h-2.41L199.12,18.99z M195.76,17.16h2.75l-1.38-4.12L195.76,17.16z"/>
+        <path class="st3" d="M215.96,17.83c-0.13,1.16-0.54,2.05-1.25,2.66c-0.7,0.62-1.64,0.92-2.81,0.92c-0.82,0-1.54-0.2-2.17-0.61c-0.63-0.41-1.11-0.99-1.46-1.74c-0.34-0.75-0.52-1.61-0.52-2.57v-1.43c0-0.98,0.17-1.85,0.51-2.6c0.34-0.76,0.84-1.34,1.48-1.75c0.64-0.41,1.38-0.62,2.22-0.62c1.18,0,2.11,0.32,2.8,0.95c0.68,0.63,1.08,1.52,1.19,2.64h-0.94c-0.23-1.87-1.25-2.81-3.05-2.81c-1,0-1.79,0.37-2.39,1.12s-0.89,1.78-0.89,3.1v1.35c0,1.27,0.29,2.29,0.87,3.04c0.58,0.76,1.36,1.14,2.34,1.14c0.97,0,1.71-0.23,2.2-0.7c0.49-0.47,0.8-1.17,0.92-2.1H215.96z"/>
+        <path class="st3" d="M217.84,17.05c0-0.79,0.15-1.5,0.46-2.13c0.31-0.63,0.74-1.12,1.29-1.47c0.56-0.35,1.19-0.53,1.9-0.53c1.09,0,1.97,0.38,2.65,1.15c0.68,0.76,1.01,1.78,1.01,3.04v0.19c0,0.79-0.15,1.5-0.46,2.14c-0.31,0.63-0.74,1.12-1.29,1.46c-0.56,0.34-1.19,0.51-1.9,0.51c-1.08,0-1.97-0.38-2.64-1.15s-1.02-1.78-1.02-3.04V17.05z M218.75,17.3c0,0.98,0.25,1.78,0.76,2.41c0.51,0.63,1.17,0.94,1.99,0.94c0.82,0,1.48-0.31,1.99-0.94c0.51-0.63,0.76-1.46,0.76-2.49v-0.17c0-0.62-0.12-1.2-0.35-1.72c-0.23-0.52-0.56-0.92-0.98-1.21c-0.42-0.29-0.9-0.43-1.44-0.43c-0.81,0-1.47,0.32-1.98,0.95c-0.51,0.63-0.76,1.46-0.76,2.49V17.3z"/>
+        <path class="st3" d="M228.17,13.08l0.03,1.33c0.3-0.49,0.68-0.87,1.13-1.11s0.96-0.37,1.51-0.37c1.29,0,2.11,0.53,2.46,1.59c0.29-0.51,0.68-0.9,1.17-1.18s1.03-0.41,1.62-0.41c1.76,0,2.65,0.96,2.69,2.88v5.46h-0.91v-5.4c0-0.73-0.16-1.27-0.47-1.63c-0.31-0.35-0.82-0.53-1.52-0.53c-0.65,0.01-1.2,0.22-1.65,0.63s-0.7,0.91-0.75,1.5v5.42h-0.91V15.8c0-0.7-0.17-1.22-0.5-1.57c-0.33-0.34-0.83-0.52-1.5-0.52c-0.57,0-1.06,0.16-1.47,0.49c-0.41,0.33-0.71,0.81-0.91,1.45v5.62h-0.91v-8.19H228.17z"/>
+        <path class="st3" d="M247.99,17.25c0,1.28-0.28,2.29-0.85,3.04c-0.57,0.75-1.32,1.12-2.27,1.12c-1.12,0-1.98-0.39-2.57-1.18v4.18h-0.9V13.08h0.84l0.04,1.16c0.59-0.87,1.45-1.31,2.57-1.31c0.98,0,1.75,0.37,2.3,1.11c0.56,0.74,0.84,1.77,0.84,3.09V17.25z M247.09,17.1c0-1.04-0.21-1.87-0.64-2.47s-1.03-0.91-1.79-0.91c-0.55,0-1.03,0.13-1.43,0.4s-0.7,0.66-0.92,1.17v3.93c0.22,0.47,0.53,0.83,0.93,1.07c0.4,0.25,0.88,0.37,1.43,0.37c0.76,0,1.36-0.3,1.78-0.91C246.87,19.13,247.09,18.25,247.09,17.1z"/>
+        <path class="st3" d="M255.49,21.27c-0.09-0.26-0.15-0.64-0.17-1.14c-0.32,0.41-0.72,0.73-1.21,0.96s-1.01,0.34-1.56,0.34c-0.79,0-1.42-0.22-1.91-0.66c-0.49-0.44-0.73-0.99-0.73-1.67c0-0.8,0.33-1.43,1-1.89c0.66-0.46,1.59-0.7,2.77-0.7h1.64v-0.93c0-0.58-0.18-1.05-0.54-1.38c-0.36-0.34-0.89-0.5-1.58-0.5c-0.63,0-1.15,0.16-1.57,0.48c-0.41,0.32-0.62,0.71-0.62,1.17l-0.91-0.01c0-0.65,0.3-1.21,0.91-1.69s1.35-0.71,2.23-0.71c0.91,0,1.63,0.23,2.16,0.68s0.8,1.09,0.81,1.91v3.88c0,0.79,0.08,1.38,0.25,1.78v0.09H255.49z M252.65,20.61c0.61,0,1.15-0.15,1.62-0.44c0.48-0.29,0.82-0.68,1.04-1.17v-1.8h-1.62c-0.9,0.01-1.61,0.18-2.12,0.5s-0.76,0.76-0.76,1.32c0,0.46,0.17,0.84,0.51,1.14S252.1,20.61,252.65,20.61z"/>
+        <path class="st3" d="M259.82,13.08l0.03,1.4c0.31-0.5,0.69-0.89,1.15-1.15c0.46-0.26,0.97-0.4,1.52-0.4c0.88,0,1.53,0.25,1.96,0.74c0.43,0.49,0.65,1.24,0.65,2.23v5.37h-0.9v-5.38c0-0.73-0.16-1.28-0.47-1.63s-0.79-0.54-1.46-0.54c-0.56,0-1.06,0.17-1.49,0.53c-0.43,0.35-0.75,0.82-0.96,1.42v5.61h-0.9v-8.19H259.82z"/>
+        <path class="st3" d="M270.39,19.96l2.39-6.89h0.98l-3.5,9.58l-0.18,0.42c-0.45,0.99-1.14,1.49-2.08,1.49c-0.22,0-0.45-0.04-0.7-0.11l-0.01-0.75l0.47,0.05c0.44,0,0.8-0.11,1.08-0.33c0.28-0.22,0.51-0.6,0.7-1.13l0.4-1.11l-3.09-8.12h0.99L270.39,19.96z"/>
+      </g>
+    </svg>
+    <div class="header-icon">🚨</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">📋 Hvem melder?</div>
+    <div class="item"><div class="checkbox"></div><div class="item-text"><strong>Navn</strong> på den som melder</div></div>
+    <div class="item"><div class="checkbox"></div><div class="item-text"><strong>Tilknytning</strong> – ansatt, kunde, pårørende, annen?</div></div>
+    <div class="item"><div class="checkbox"></div><div class="item-text"><strong>Tilbakeringingsnummer</strong></div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">📍 Hva og hvor?</div>
+    <div class="item"><div class="checkbox"></div><div class="item-text"><strong>Hva har skjedd?</strong> Kort beskrivelse av hendelsen</div></div>
+    <div class="item"><div class="checkbox"></div><div class="item-text"><strong>Sted/lokasjon</strong> – adresse, avdeling, koordinater</div></div>
+    <div class="item"><div class="checkbox"></div><div class="item-text"><strong>Tidspunkt</strong> – når skjedde det?</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">🧑‍🤝‍🧑 Omfang</div>
+    <div class="item"><div class="checkbox"></div><div class="item-text"><strong>Involverte/skadede</strong> – antall og status</div></div>
+    <div class="item"><div class="checkbox"></div><div class="item-text"><strong>Er nødetatene varslet?</strong> (110 / 112 / 113)</div></div>
+    <div class="item"><div class="checkbox"></div><div class="item-text"><strong>Pågår hendelsen</strong> fortsatt?</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">⚡ Tiltak og oppfølging</div>
+    <div class="item"><div class="checkbox"></div><div class="item-text"><strong>Iverksatte tiltak</strong> – hva er allerede gjort?</div></div>
+    <div class="item"><div class="checkbox"></div><div class="item-text"><strong>Behov for bistand</strong> – hva trengs nå?</div></div>
+    <div class="item"><div class="checkbox"></div><div class="item-text"><strong>Videre kontakt</strong> – varsler vi dem, eller kontakter de oss?</div></div>
+    <div class="item"><div class="checkbox"></div><div class="item-text"><strong>Loggfør</strong> tid, info og beslutninger</div></div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-note">Varsle Beredskapsorganisasjon etter samtale</div>
+    <div class="footer-badge">🔒 INTERNAL</div>
+  </div>
+
+</div>
+</body>
+</html>
