@@ -34,13 +34,8 @@
     align-items: center;
     justify-content: space-between;
   }
-  .header svg {
-    height: 48px;
-    width: auto;
-  }
-  .header-icon {
-    font-size: 28px;
-  }
+  .header svg { height: 48px; width: auto; }
+  .header-icon { font-size: 28px; }
   .section {
     padding: 14px 18px 10px;
     border-bottom: 1px solid #f0f0f0;
@@ -59,24 +54,71 @@
     align-items: flex-start;
     gap: 10px;
     margin-bottom: 7px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
   }
   .checkbox {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     border: 2px solid #c0392b;
     border-radius: 3px;
     flex-shrink: 0;
     margin-top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .checkbox::after {
+    content: '';
+    display: none;
+    width: 5px;
+    height: 9px;
+    border: 2px solid white;
+    border-top: none;
+    border-left: none;
+    transform: rotate(45deg) translateY(-1px);
+  }
+  .item.checked .checkbox {
+    background: #c0392b;
+  }
+  .item.checked .checkbox::after {
+    display: block;
+  }
+  .item.checked .item-text {
+    color: #aaa;
+    text-decoration: line-through;
   }
   .item-text {
     font-size: 12.5px;
     color: #222;
     line-height: 1.4;
+    transition: color 0.15s;
   }
   .item-text strong {
     font-weight: 600;
     color: #111;
   }
+  .item.checked .item-text strong {
+    color: #aaa;
+  }
+  .reset-btn {
+    display: block;
+    margin: 10px 18px;
+    padding: 7px;
+    background: none;
+    border: 1px solid #c0392b;
+    border-radius: 8px;
+    color: #c0392b;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .reset-btn:active { background: #fdecea; }
   .footer {
     background: #f8f8f8;
     padding: 10px 18px;
@@ -85,11 +127,7 @@
     align-items: center;
     border-top: 1px solid #e8e8e8;
   }
-  .footer-note {
-    font-size: 10px;
-    color: #888;
-    font-style: italic;
-  }
+  .footer-note { font-size: 10px; color: #888; font-style: italic; }
   .footer-badge {
     background: #c0392b;
     color: white;
@@ -106,7 +144,6 @@
 <div class="card">
 
   <div class="header">
-    <!-- Origo Solutions logo – hvit versjon -->
     <svg viewBox="0 0 293.02 134.75" xmlns="http://www.w3.org/2000/svg">
       <style>.st3{fill:#FFFFFF;}</style>
       <g>
@@ -145,32 +182,34 @@
 
   <div class="section">
     <div class="section-title">📋 Hvem melder?</div>
-    <div class="item"><div class="checkbox"></div><div class="item-text"><strong>Navn</strong> på den som melder</div></div>
-    <div class="item"><div class="checkbox"></div><div class="item-text"><strong>Tilknytning</strong> – ansatt, kunde, pårørende, annen?</div></div>
-    <div class="item"><div class="checkbox"></div><div class="item-text"><strong>Tilbakeringingsnummer</strong></div></div>
+    <div class="item" onclick="toggle(this)"><div class="checkbox"></div><div class="item-text"><strong>Navn</strong> på den som melder</div></div>
+    <div class="item" onclick="toggle(this)"><div class="checkbox"></div><div class="item-text"><strong>Tilknytning</strong> – ansatt, kunde, pårørende, annen?</div></div>
+    <div class="item" onclick="toggle(this)"><div class="checkbox"></div><div class="item-text"><strong>Tilbakeringingsnummer</strong></div></div>
   </div>
 
   <div class="section">
     <div class="section-title">📍 Hva og hvor?</div>
-    <div class="item"><div class="checkbox"></div><div class="item-text"><strong>Hva har skjedd?</strong> Kort beskrivelse av hendelsen</div></div>
-    <div class="item"><div class="checkbox"></div><div class="item-text"><strong>Sted/lokasjon</strong> – adresse, avdeling, koordinater</div></div>
-    <div class="item"><div class="checkbox"></div><div class="item-text"><strong>Tidspunkt</strong> – når skjedde det?</div></div>
+    <div class="item" onclick="toggle(this)"><div class="checkbox"></div><div class="item-text"><strong>Hva har skjedd?</strong> Kort beskrivelse av hendelsen</div></div>
+    <div class="item" onclick="toggle(this)"><div class="checkbox"></div><div class="item-text"><strong>Sted/lokasjon</strong> – adresse, avdeling, koordinater</div></div>
+    <div class="item" onclick="toggle(this)"><div class="checkbox"></div><div class="item-text"><strong>Tidspunkt</strong> – når skjedde det?</div></div>
   </div>
 
   <div class="section">
     <div class="section-title">🧑‍🤝‍🧑 Omfang</div>
-    <div class="item"><div class="checkbox"></div><div class="item-text"><strong>Involverte/skadede</strong> – antall og status</div></div>
-    <div class="item"><div class="checkbox"></div><div class="item-text"><strong>Er nødetatene varslet?</strong> (110 / 112 / 113)</div></div>
-    <div class="item"><div class="checkbox"></div><div class="item-text"><strong>Pågår hendelsen</strong> fortsatt?</div></div>
+    <div class="item" onclick="toggle(this)"><div class="checkbox"></div><div class="item-text"><strong>Involverte/skadede</strong> – antall og status</div></div>
+    <div class="item" onclick="toggle(this)"><div class="checkbox"></div><div class="item-text"><strong>Er nødetatene varslet?</strong> (110 / 112 / 113)</div></div>
+    <div class="item" onclick="toggle(this)"><div class="checkbox"></div><div class="item-text"><strong>Pågår hendelsen</strong> fortsatt?</div></div>
   </div>
 
   <div class="section">
     <div class="section-title">⚡ Tiltak og oppfølging</div>
-    <div class="item"><div class="checkbox"></div><div class="item-text"><strong>Iverksatte tiltak</strong> – hva er allerede gjort?</div></div>
-    <div class="item"><div class="checkbox"></div><div class="item-text"><strong>Behov for bistand</strong> – hva trengs nå?</div></div>
-    <div class="item"><div class="checkbox"></div><div class="item-text"><strong>Videre kontakt</strong> – varsler vi dem, eller kontakter de oss?</div></div>
-    <div class="item"><div class="checkbox"></div><div class="item-text"><strong>Loggfør</strong> tid, info og beslutninger</div></div>
+    <div class="item" onclick="toggle(this)"><div class="checkbox"></div><div class="item-text"><strong>Iverksatte tiltak</strong> – hva er allerede gjort?</div></div>
+    <div class="item" onclick="toggle(this)"><div class="checkbox"></div><div class="item-text"><strong>Behov for bistand</strong> – hva trengs nå?</div></div>
+    <div class="item" onclick="toggle(this)"><div class="checkbox"></div><div class="item-text"><strong>Videre kontakt</strong> – varsler vi dem, eller kontakter de oss?</div></div>
+    <div class="item" onclick="toggle(this)"><div class="checkbox"></div><div class="item-text"><strong>Loggfør</strong> tid, info og beslutninger</div></div>
   </div>
+
+  <button class="reset-btn" onclick="resetAll()">↺ Nullstill sjekkliste</button>
 
   <div class="footer">
     <div class="footer-note">Varsle Beredskapsorganisasjon etter samtale</div>
@@ -178,5 +217,13 @@
   </div>
 
 </div>
+<script>
+  function toggle(el) {
+    el.classList.toggle('checked');
+  }
+  function resetAll() {
+    document.querySelectorAll('.item.checked').forEach(el => el.classList.remove('checked'));
+  }
+</script>
 </body>
 </html>
